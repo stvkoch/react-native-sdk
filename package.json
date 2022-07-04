@@ -1,0 +1,24 @@
+{
+  "name": "@transak/react-native-sdk",
+  "version": "1.0.0-beta.1",
+  "description": "Transak React Native SDK that allows you to easily integrate the fiat on/ramp",
+  "license": "ISC",
+  "author": "Transak Inc. <support@transak.com> (https://global.transak.com/)",
+  "homepage": "https://transak.gitbook.io/transak-docs/coverage-and-capabilities/integration-options/sdk-integration/mobile/react-native",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Transak/transak-react-native-sdk"
+  },
+  "peerDependencies": {
+    "@react-native-community/netinfo": "~9.1.0",
+    "react": "*",
+    "react-native": "*",
+    "react-native-inappbrowser-reborn": "~3.6.3",
+    "react-native-webview": "*"
+  },
+  "dependencies": {
+    "pusher-js": "~7.0.6",
+    "query-string": "~7.1.1"
+  }
+}
