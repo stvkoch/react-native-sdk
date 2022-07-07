@@ -5,8 +5,8 @@ import { InAppBrowser } from 'react-native-inappbrowser-reborn';
 import { generateUrl } from './generate-url';
 import { eventListener } from './event-listener';
 
-function ReactNativeSdk({ config, onTransakEventHandler, ...webviewProps }) {
-  const transakConfig = { ...config };
+function ReactNativeSdk({ queryParams, onTransakEventHandler, ...webviewProps }) {
+  const transakConfig = { ...queryParams };
 
   if (!transakConfig.partnerOrderId) {
     const dummyRandomNumber = `${new Date().valueOf()}-${Math.round(Math.random()*100000000)}`;

@@ -1,23 +1,29 @@
 # Transak React Native SDK
 
-An SDK for react native integration of Transak widget.
-Wrapped over webview(`react-native-webview`), it provides option to listen to order events.
-Using this you get Google Pay integrated by default.
+A React Native SDK for decentralised applications to onboard their global user base with fiat currency.
 
 ## Installation
 
 ```sh
 # Using yarn
-$ yarn add @transak/react-native-sdk
+yarn add @transak/react-native-sdk
 
 # Using npm
-$ npm install @transak/react-native-sdk
+npm install @transak/react-native-sdk
 ```
 
-Install these required peer dependencies to facilitate auto-linking (If not already part of your app)
+Install these required peer dependencies to facilitate auto-linking.
 
-```
-yarn add react-native-webview react-native-inappbrowser-reborn @react-native-community/netinfo
+```sh
+# Using yarn
+yarn add react-native-webview 
+yarn add react-native-inappbrowser-reborn 
+yarn add @react-native-community/netinfo
+
+# Using npm
+npm install react-native-webview 
+npm install react-native-inappbrowser-reborn 
+npm install @react-native-community/netinfo
 ```
 
 ## Example usage
@@ -26,13 +32,36 @@ yarn add react-native-webview react-native-inappbrowser-reborn @react-native-com
 import TransakWebView from '@transak/react-native-sdk';
 
 function TransakReactNativeSdkIntegration() {
+  const transakEventHandler = (event, data) => {
+    switch(event) {
+      case 'ORDER_PROCESSING':
+        console.log(data);
+        break;
+
+      case 'ORDER_COMPLETED':
+        console.log(data);
+        break;
+
+      default:
+        console.log(data);
+    }
+  };
+
   return (
     <TransakWebView
-      config={{
+      queryParams={{
         apiKey: '<your-api-key>',
         environment: '<environment: STAGING/PRODUCTION>',
+        // .....
+        // For the full list of query params refer Props section below
       }}
-      onTransakEventHandler={(event, data) => console.log(event, data)}
+      onTransakEventHandler={transakEventHandler}
+
+      style={}          // react-native-webview prop
+      onLoadStart={}    // react-native-webview prop
+      onLoadEnd={}      // react-native-webview prop
+      // .....
+      // For the full list of react-native-webview props refer Props section below
     />
   );
 };
@@ -40,13 +69,13 @@ function TransakReactNativeSdkIntegration() {
 
 ### Props
 
-The component accepts all the valid props for react-native-webview except the following: injectJavaScript, sharedCookiesEnabled, injectedJavaScript, injectedJavaScriptBeforeContentLoaded
+| Prop                  | Description                                                                                                                                                                 |
+|:----------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| queryParams           | Refer [here](https://www.notion.so/transak/Query-Parameters-9ec523df3b874ec58cef4fa3a906f238) for the full list of query params                                             |
+| onTransakEventHandler | Accepts callback function to listen to order related [events](https://www.notion.so/transak/React-Native-c4855621543842839a2d03f3fc06df1f#795cde55bc0b4b30becaf50ac2dd59a2) |
 
-| Prop                  | Description                                                                                                                             |
-|:----------------------|:----------------------------------------------------------------------------------------------------------------------------------------|
-| config                 | Refer [here](https://www.notion.so/transak/Query-Parameters-9ec523df3b874ec58cef4fa3a906f238) for a full list of valid options          |
-| onTransakEventHandler | Accepts callback function to listen to order related [events](https://www.notion.so/transak/WebSocket-6beaa769ec7d4ca0aa0e2b7dc5b0c43d) |
+This component accepts most of the [react-native-webview props](https://github.com/react-native-webview/react-native-webview/blob/HEAD/docs/Reference.md), except the following: source, injectJavaScript, sharedCookiesEnabled, injectedJavaScript, injectedJavaScriptBeforeContentLoaded
 
 ## License
 
-ISC Licensed. Copyright (c) 2022 Transak Inc..
+ISC Licensed. Copyright (c) 2022 Transak Inc.

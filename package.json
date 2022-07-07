@@ -1,10 +1,10 @@
 {
   "name": "@transak/react-native-sdk",
-  "version": "1.0.0-beta.1",
-  "description": "Transak React Native SDK that allows you to easily integrate the fiat on/ramp",
+  "version": "1.0.0-beta.2",
+  "description": "A React Native SDK for decentralised applications to onboard their global user base with fiat currency",
   "license": "ISC",
   "author": "Transak Inc. <support@transak.com> (https://global.transak.com/)",
-  "homepage": "https://transak.gitbook.io/transak-docs/coverage-and-capabilities/integration-options/sdk-integration/mobile/react-native",
+  "homepage": "https://www.notion.so/transak/React-Native-c4855621543842839a2d03f3fc06df1f",
   "main": "index.js",
   "repository": {
     "type": "git",
